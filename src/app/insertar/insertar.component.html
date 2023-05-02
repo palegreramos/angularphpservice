@@ -1,0 +1,82 @@
+<p>insertar works!</p>
+<div class="form-group my-3">
+    <form (ngSubmit)="entradausuario()" [formGroup]="newusuarioForm" class="row">
+      <label for="nombre" class="form-label col text-end">Usuario</label>
+      <input
+        type="text"
+        placeholder="nombre"
+        name="nombre"
+        formControlName="nombre"
+        class="col"
+      />
+  
+      <label for="apellidos" class="form-label col text-end">apellidos</label>
+      <input
+        type="text"
+        placeholder="apellidos"
+        name="apellidos"
+        formControlName="apellidos"
+        class="col"
+      />
+      <label for="dni" class="form-label col text-end">dni</label>
+      <input
+        type="text"
+        placeholder="dni"
+        name="dni"
+        formControlName="dni"
+        class="col"
+      />
+      <div class="col text-center">
+        <button type="submit" class="btn btn-primary">Entrar</button>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col">
+        <div *ngIf="nombre?.invalid && nombre?.dirty">
+          <small
+            class="form-text text-danger"
+            *ngIf="nombre?.errors?.['minlength'] || nombre?.errors?.['maxlength']"
+            >Usuario corto o largo</small
+          >
+          <small
+            class="form-text text-danger"
+            *ngIf="nombre?.errors?.['pattern']"
+          >
+            Formato de usuario no correcto
+          </small>
+          <small
+            class="form-text text-danger"
+            *ngIf="nombre?.errors?.['required']"
+          >
+            *
+          </small>
+        </div>
+      </div>
+      <div class="col">
+        <div *ngIf="apellidos?.invalid && apellidos?.dirty">
+          <small
+            class="form-text text-danger"
+            *ngIf="apellidos?.errors?.['minlength']"
+            >apellidos corto</small
+          >
+          <small
+            class="form-text text-danger"
+            *ngIf="apellidos?.errors?.['pattern']"
+          >
+            Formato no correcto
+          </small>
+          <small
+            class="form-text text-danger"
+            *ngIf="apellidos?.errors?.['required']"
+          >
+            *
+          </small>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div *ngIf="message" [ngClass]="clasec">{{ message }}</div>
+      <div *ngIf="resp?.error?.msg" class="text-danger">{{ resp.error.msg}}</div>
+      <div  *ngIf="resp?.error?.sqlstate=='00000'" class="text-success">Datos insertados correctamente</div>
+    </div>
+  </div>

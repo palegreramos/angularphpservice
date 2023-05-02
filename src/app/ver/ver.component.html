@@ -1,0 +1,18 @@
+<table class="table table-success table-striped table-hover">
+  <thead>
+    <th>Name</th>
+    <th>Apellidos</th>
+    <th>DNI</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let uno of datos">
+      <td>{{ uno.nombre }}</td>
+      <td>{{ uno.apellidos }}</td>
+      <td>{{ uno.dni }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<p>{{ datos | json }}</p>
