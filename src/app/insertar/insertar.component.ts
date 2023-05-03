@@ -20,7 +20,7 @@ export class InsertarComponent {
   public message: string = '';
   public clasec: string = '';
   public clases: string = 'text-info';
- resp:any;
+  resp: any;
 
   constructor(
     private servicioService: ServicioService,
@@ -44,7 +44,7 @@ export class InsertarComponent {
       console.log('Entrada correcta', this.newusuario);
       this.servicioService
         .postDato(this.newusuario)
-        .subscribe((resp) => this.resp=resp);
+        .subscribe((resp) => (this.resp = resp));
     }
   }
 
