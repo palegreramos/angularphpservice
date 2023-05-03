@@ -27,9 +27,9 @@ export class InsertarComponent {
     private fb: FormBuilder
   ) {
     this.newusuarioForm = this.fb.group({
-      nombre: ['', [Validators.required]],
-      apellidos: ['', [Validators.required]],
-      dni: ['', [Validators.required]],
+      nombre: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
+      apellidos: ['', [Validators.required,Validators.minLength(3),Validators.maxLength(20)]],
+      dni: ['', [Validators.required,Validators.pattern('^[0-9]{8}[a-zA-Z]{1}$')]],
     });
   }
 
