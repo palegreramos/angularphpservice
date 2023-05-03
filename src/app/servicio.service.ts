@@ -8,13 +8,15 @@ import { Usuarios } from './model/usuarios';
 })
 export class ServicioService {
 
+  url:string='http://localhost/apps/leerescribirphp/server/';
+
   constructor(private http: HttpClient) { }
 
   getDatos():  Observable<Usuarios[]> {
-    return this.http.get<Usuarios[]>('http://localhost/ajax/usuarios/leer.php');
+    return this.http.get<Usuarios[]>(`${this.url}leer.php`);
   }
 
   postDato(nuevo:Usuarios): Observable<Usuarios> {
-    return this.http.post<Usuarios>('http://localhost/ajax/usuarios/insertar.php',nuevo);
+    return this.http.post<Usuarios>(`${this.url}insertar.php`,nuevo);
   }
 }
